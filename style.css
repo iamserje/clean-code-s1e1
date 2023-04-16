@@ -12,11 +12,11 @@ body {
   text-align: right;
 }
 
-.header img {
+.header__img {
   width: 100%;
 }
 
-.header .more_inf {
+.header__link {
   font-family: fantasy, cursive;
 }
 
@@ -26,7 +26,7 @@ body {
   }
 }
 
-.centered-main-page-element {
+.main {
   display: block;
   width: 500px;
   margin: 0 auto 0;
@@ -38,7 +38,7 @@ body {
   flex-grow: 1;
 }
 
-.task-row-wrapper {
+.add-item__input {
   display: flex;
 }
 
@@ -47,8 +47,7 @@ ul {
   padding: 0px;
 }
 
-li,
-h3 {
+li {
   list-style: none;
 }
 
@@ -72,8 +71,7 @@ button:hover {
 }
 
 /* Heading */
-h3,
-label[for="new-task"] {
+.section__title {
   color: #333;
   font-weight: 700;
   font-size: 15px;
@@ -102,8 +100,7 @@ input[type="text"]:focus {
 
 /* New Task */
 /* label[for="new-task"] */
-h3 {
-  display: block;
+.add-item .section__title {
   margin: 0 0 20px;
 }
 
