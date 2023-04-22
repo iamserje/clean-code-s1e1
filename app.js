@@ -19,16 +19,10 @@ var createNewTaskElement=function(taskString) {
     var listItem=document.createElement('li');
     listItem.classList.add('todo__item');
 
-    //input (checkbox)
-    var checkBox=document.createElement('input');//checkbx
-    //label
+    var checkBox=document.createElement('input');//input (checkbox)
     var label=document.createElement('label');//label
-    //input (text)
-    var editInput=document.createElement('input');//text
-    //button.edit
+    var editInput=document.createElement('input');//input (text)
     var editButton=document.createElement('button');//edit button
-
-    //button.delete
     var deleteButton=document.createElement('button');//delete button
     var deleteButtonImg=document.createElement('img');//delete button image
 
@@ -41,15 +35,13 @@ var createNewTaskElement=function(taskString) {
     checkBox.classList.add('todo-check');
     editInput.type='text';
     editInput.className='task task-edit';
-
     editButton.innerText='Edit'; //innerText encodes special characters, HTML does not.
     editButton.className='button-edit';
-
     deleteButton.className='button-del';
     deleteButtonImg.src='./remove.svg';
-    deleteButton.appendChild(deleteButtonImg);
 
     //and appending.
+    deleteButton.appendChild(deleteButtonImg);
     listItem.appendChild(checkBox);
     listItem.appendChild(label);
     listItem.appendChild(editInput);
@@ -64,12 +56,10 @@ var addTask=function() {
     if (!taskInput.value) return;
     var listItem=createNewTaskElement(taskInput.value);
 
-    //Append listItem to incompleteTaskHolder
     incompleteTaskHolder.appendChild(listItem);
     bindTaskEvents(listItem, taskCompleted);
 
     taskInput.value='';
-
 }
 
 //Edit an existing task.
@@ -79,14 +69,12 @@ var editTask=function() {
     console.log("Change 'edit' to 'save'");
 
     var listItem=this.parentNode;
-
     var editInput=listItem.querySelector('.task-edit');
     var label=listItem.querySelector('.task-title');
     var editBtn=listItem.querySelector('.button-edit');
     var containsClass=listItem.classList.contains('todo-list__item_edit');
     //If class of the parent is .todo-list__item_edit
     if(containsClass) {
-
         //switch to .todo-list__item_edit
         //label becomes the inputs value.
         label.innerText=editInput.value;
@@ -95,7 +83,6 @@ var editTask=function() {
         editInput.value=label.innerText;
         editBtn.innerText='Save';
     }
-
     //toggle .todo-list__item_edit on the parent.
     listItem.classList.toggle('todo-list__item_edit');
 };
@@ -120,7 +107,6 @@ var taskCompleted=function() {
     var listItem=this.parentNode;
     completedTasksHolder.appendChild(listItem);
     bindTaskEvents(listItem, taskIncomplete);
-
 }
 
 
@@ -135,17 +121,8 @@ var taskIncomplete=function() {
 }
 
 
-var ajaxRequest=function() {
-    console.log('AJAX Request');
-}
-
-//The glue to hold it all together.
-
-
 //Set the click handler to the addTask function.
-addButton.onclick=addTask;
 addButton.addEventListener('click',addTask);
-addButton.addEventListener('click',ajaxRequest);
 
 
 var bindTaskEvents=function(taskListItem,checkBoxEventHandler) {
@@ -166,18 +143,15 @@ var bindTaskEvents=function(taskListItem,checkBoxEventHandler) {
 //cycle over incompleteTaskHolder ul list items
 //for each list item
 for (var i=0; i<incompleteTaskHolder.children.length;i++) {
-
     //bind events to list items chldren(tasksCompleted)
     bindTaskEvents(incompleteTaskHolder.children[i],taskCompleted);
 }
-
 
 //cycle over completedTasksHolder ul list items
 for (var i=0; i<completedTasksHolder.children.length;i++) {
     //bind events to list items chldren(tasksIncompleted)
     bindTaskEvents(completedTasksHolder.children[i],taskIncomplete);
 }
-
 
 // Issues with usability don't get seen until they are in front of a human tester.
 
