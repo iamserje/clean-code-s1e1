@@ -193,3 +193,4 @@ for (var i=0; i<completedTasksHolder.children.length;i++){
 //prevent creation of empty tasks.
 
 //Change edit to save when you are in edit mode.
+alert('Добрый день, пожалуйста, дайте мне время на работу. Напишите мне пожалуйста')
